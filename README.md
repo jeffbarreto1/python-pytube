@@ -1,2 +1,4 @@
 # python-pytube
-Baixando vídeos do YouTube com Python
+Baixando vídeos do YouTube com Python/Pytube
+
+https://pytube.io/en/latest/
