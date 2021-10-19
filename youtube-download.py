@@ -38,9 +38,10 @@ def opcao1():
 def opcao2():
 
     print("Para baixar vídeos de uma Playlist do YouTube\n")
+    print("-- ATENÇÃO --\nPara baixar vídeos de uma playlist a URL deve ter o seguinte formato:\nhttps://www.youtube.com/playlist?list=ID_PLAYLIST\n")
     linkplaylist = input("Informe a URL da sua Playlist:   ")
     p = Playlist(linkplaylist)
-    download_type = int(input("\n1 - Para baixar os vídeos (.MP4); \n2 - Para baixar apenas os audios (.MP3).\n -> "))
+    download_type = int(input("\n1 - Para baixar os vídeos; \n2 - Para baixar apenas os audios (.MP3).\n -> "))
 
     if (download_type == 1):
         print(f'Playlist name: {p.title}')
@@ -65,10 +66,11 @@ def opcao2():
 
 def opcao3():
 
-    print("Para baixar vídeos de um Channel do YouTube")
+    print("Para baixar vídeos de um Channel do YouTube\n")
+    print("-- ATENÇÃO --\nPara baixar vídeos de uma playlist a URL deve ter o seguinte formato:\nhhttps://www.youtube.com/c/CHANNEL_NAME\n")
     linkchannel = input("Informe a URL do seu vídeo:   ")
     c = Channel(linkchannel)
-    download_type = int(input("\n1 - Para baixar os vídeos (.MP4); \n2 - Para baixar apenas os audios (.MP3).\n -> "))
+    download_type = int(input("\n1 - Para baixar os vídeos; \n2 - Para baixar apenas os audios (.MP3).\n -> "))
 
     if (download_type == 1):
         print(f'Downloading: {c.channel_name}')
