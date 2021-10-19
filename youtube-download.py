@@ -56,14 +56,7 @@ def opcao2():
         for video in p.videos[:qtd]:
             print(f'Downloading {p.title} WAIT')
             video.streams.first().download('temp')
-            folder = "temp"
-        for file in os.listdir(folder):
-            if re.search('3gpp', file):
-                mp4_path = os.path.join(folder, file)
-                mp3_path = os.path.join('.', os.path.splitext(file)[0]+'.mp3')
-                new_file = mp.AudioFileClip(mp4_path)
-                new_file.write_audiofile(mp3_path)
-                os.remove(mp4_path)
+            convertendo()
         print("Download de", qtd, "vídeos concluído!")
     
     else:
@@ -71,6 +64,7 @@ def opcao2():
         
 
 def opcao3():
+
     print("Para baixar vídeos de um Channel do YouTube")
     linkchannel = input("Informe a URL do seu vídeo:   ")
     c = Channel(linkchannel)
@@ -90,18 +84,23 @@ def opcao3():
         for video in c.videos[:qtd]:
             print(f'Downloading {c.channel_name} WAIT')
             video.streams.first().download('temp')
-            folder = "temp"
-            for file in os.listdir(folder):
-                if re.search('3gpp', file):
-                    mp4_path = os.path.join(folder, file)
-                    mp3_path = os.path.join('.', os.path.splitext(file)[0]+'.mp3')
-                    new_file = mp.AudioFileClip(mp4_path)
-                    new_file.write_audiofile(mp3_path)
-                    os.remove(mp4_path)
-        print("Download de", qtd, " vídeos concluído!")
+            convertendo()
+        print("Download de", qtd, "vídeos concluído!")
 
     else:
         print("OPAÇÃO INVALIDA, TENTE NOVAMENTE")
+
+
+def convertendo():
+    
+    folder = "temp"
+    for file in os.listdir(folder):
+        if re.search('3gpp', file):
+            temp_path = os.path.join(folder, file)
+            root_path = os.path.join('.', os.path.splitext(file)[0]+'.mp3')
+            new_file = mp.AudioFileClip(temp_path)
+            new_file.write_audiofile(root_path)
+            os.remove(temp_path)
 
 opcoes = { 1:opcao1, 2:opcao2, 3:opcao3}
 
