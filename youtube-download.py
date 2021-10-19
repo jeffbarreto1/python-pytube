@@ -11,7 +11,7 @@ def opcao1():
     print("Para baixar um vídeo do YouTube")
     link = input("Informe a URL do seu vídeo:   ")
     yt = YouTube(link)
-    download_type = int(input("\n1 - Para baixar o vídeo (.MP4); \n2 - Para baixar apenas o audio (.MP3).\n -> "))
+    download_type = int(input("\n1 - Para baixar o vídeo; \n2 - Para baixar apenas o audio (.MP3).\n -> "))
 
     if (download_type == 1):
         print(f'Downloading {yt.title} WAIT')
