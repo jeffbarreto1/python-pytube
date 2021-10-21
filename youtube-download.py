@@ -8,7 +8,7 @@ from pytube import Channel
 
 def opcao1():
 
-    print("Para baixar um vídeo do YouTube")
+    print("Para baixar um vídeo do YouTube informe a URL")
     link = input("Informe a URL do seu vídeo:   ")
     yt = YouTube(link)
     download_type = int(input("\n1 - Para baixar o vídeo; \n2 - Para baixar apenas o audio (.MP3).\n -> "))
@@ -17,6 +17,7 @@ def opcao1():
         print(f'Downloading {yt.title} WAIT')
         baixando = yt.streams.get_highest_resolution()
         baixando.download()
+        print("Download concluído!")
 
     elif (download_type == 2):
         print(f'Downloading {yt.title} WAIT')
@@ -104,7 +105,9 @@ def convertendo():
             new_file.write_audiofile(root_path)
             os.remove(temp_path)
 
-opcoes = { 1:opcao1, 2:opcao2, 3:opcao3}
 
+opcoes = { 1:opcao1, 2:opcao2, 3:opcao3}
 escolha = int(input("\n--> Escolha uma opção <-- \n 1 - Download simples; \n 2 - Para download de uma playlist; \n 3 - Para download de um canal. \n-> "))
 opcoes.get(escolha)()
+
+
